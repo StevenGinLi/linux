@@ -1,0 +1,91 @@
+[ 6094.819461] CMPE 283 Assignment 1 Module Start
+               PROCESSOR: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz
+               
+[ 6094.819465] Pinbased Controls MSR: 0x3f00000016
+[ 6094.819467]   External Interrupt Exiting: Can set=Yes, Can clear=Yes
+[ 6094.819467]   NMI Exiting: Can set=Yes, Can clear=Yes
+[ 6094.819468]   Virtual NMIs: Can set=Yes, Can clear=Yes
+[ 6094.819468]   Activate VMX Preemption Timer: Can set=No, Can clear=Yes
+[ 6094.819469]   Process Posted Interrupts: Can set=No, Can clear=Yes
+
+[ 6094.819470] Procbased Controls MSR: 0xfff9fffe0401e172
+[ 6094.819471]   INTERRUPT_WINDOW_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819471]   USE_TSC_OFFSETTING: Can set=Yes, Can clear=Yes
+[ 6094.819472]   HLT_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819472]   INVLPG_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819473]   MWAIT_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819473]   RDPMC_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819474]   RDTSC_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819474]   CR3_LOAD_EXITING: Can set=Yes, Can clear=No
+[ 6094.819475]   CR3_STORE_EXITING: Can set=Yes, Can clear=No
+[ 6094.819475]   CR8_LOAD_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819476]   CR8_STORE_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819476]   USE_TPR_SHADOW: Can set=Yes, Can clear=Yes
+[ 6094.819477]   NMI_WINDOW_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819477]   MOV_DR_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819478]   UNCONDITIONAL_IO_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819478]   USE_IO_BITMAPS: Can set=Yes, Can clear=Yes
+[ 6094.819479]   MONITOR_TRAP_FLAG: Can set=Yes, Can clear=Yes
+[ 6094.819479]   USE_MSR_BITMAPS: Can set=Yes, Can clear=Yes
+[ 6094.819480]   MONITOR_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819480]   PAUSE_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819481]   ACTIVATE_SECONDARY_CONTROLS: Can set=Yes, Can clear=Yes
+
+[ 6094.819482] Procbased Secondary Controls MSR: 0x153cfe00000000
+[ 6094.819483]   VIRTUALIZE_APIC_ACCESSES: Can set=No, Can clear=Yes
+[ 6094.819483]   ENABLE_EPT: Can set=Yes, Can clear=Yes
+[ 6094.819484]   DESCRIPTOR_TABLE_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819484]   ENABLE_RDTSCP: Can set=Yes, Can clear=Yes
+[ 6094.819485]   VIRTUALIZE_X2APIC_MODE: Can set=Yes, Can clear=Yes
+[ 6094.819485]   ENABLE_VPID: Can set=Yes, Can clear=Yes
+[ 6094.819486]   WBINVD_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819486]   UNRESTRICTED_GUEST: Can set=Yes, Can clear=Yes
+[ 6094.819487]   APIC_REGISTER_VIRTUALIZATION: Can set=No, Can clear=Yes
+[ 6094.819487]   VIRTUAL_INTERRUPT_DELIVERY: Can set=No, Can clear=Yes
+[ 6094.819488]   PAUSE_LOOP_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819488]   RDRAND_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819489]   ENABLE_INVPCID: Can set=Yes, Can clear=Yes
+[ 6094.819489]   ENABLE_VM_FUNCTIONS: Can set=Yes, Can clear=Yes
+[ 6094.819490]   VMCS_SHADOWING: Can set=No, Can clear=Yes
+[ 6094.819490]   ENABLE_ENCLS_EXITING: Can set=No, Can clear=Yes
+[ 6094.819491]   RDSEED_EXITING: Can set=Yes, Can clear=Yes
+[ 6094.819491]   ENABLE_PML: Can set=No, Can clear=Yes
+[ 6094.819492]   EPT_VIOLATION_#VE: Can set=Yes, Can clear=Yes
+[ 6094.819492]   CONCEAL_VMX_FROM_PT: Can set=No, Can clear=Yes
+[ 6094.819493]   ENABLE_XSAVES/XRSTORS: Can set=Yes, Can clear=Yes
+[ 6094.819493]   MODE_BASED_EXECUTE_CONTROL_FOR_EPT: Can set=No, Can clear=Yes
+[ 6094.819494]   SUB_PAGE_WRITE_PERMISSIONS_FOR_EPT: Can set=No, Can clear=Yes
+[ 6094.819494]   INTEL_PT_USES_GUEST_PHYSICAL_ADDRESSES: Can set=No, Can clear=Yes
+[ 6094.819495]   USE_TSC_SCALING: Can set=No, Can clear=Yes
+[ 6094.819495]   ENABLE_USER_WAIT_AND_PAUSE: Can set=No, Can clear=Yes
+[ 6094.819496]   ENABLE_ENCLV_EXITING: Can set=No, Can clear=Yes
+
+[ 6094.819497] Exit Controls MSR: 0x3fefff00036dff
+[ 6094.819497]   SAVE_DEBUG_CONTROLS: Can set=Yes, Can clear=No
+[ 6094.819498]   HOST_ADDRESS_SAPCE_SIZE: Can set=Yes, Can clear=Yes
+[ 6094.819499]   LOAD_IA32_PERF_GLOBAL_CTRL: Can set=No, Can clear=Yes
+[ 6094.819499]   ACKNOWLEDGE_INTERRUPT_ON_EXIT: Can set=Yes, Can clear=Yes
+[ 6094.819500]   SAVE_IA32_PAT: Can set=Yes, Can clear=Yes
+[ 6094.819500]   LOAD_IA32_PAT: Can set=Yes, Can clear=Yes
+[ 6094.819501]   SAVE_IA32_EFER: Can set=Yes, Can clear=Yes
+[ 6094.819501]   LOAD_IA32_EFER: Can set=Yes, Can clear=Yes
+[ 6094.819501]   SAVE_VMX_PREEMPTION_TIMER_VALUE: Can set=No, Can clear=Yes
+[ 6094.819502]   CLEAR_IA32_BNDCFGS: Can set=No, Can clear=Yes
+[ 6094.819502]   CONCEAL_VMX_FROM_PT: Can set=No, Can clear=Yes
+[ 6094.819503]   CLEAR_IA32_RTIT_CTL: Can set=No, Can clear=Yes
+[ 6094.819503]   LOAD_CET_STATE: Can set=No, Can clear=Yes
+[ 6094.819504]   LOAD_PKRS: Can set=No, Can clear=Yes
+
+[ 6094.819505] Entry Controls MSR: 0xd3ff000011ff
+[ 6094.819506]   LOAD_DEBUG_CONTROLS: Can set=Yes, Can clear=No
+[ 6094.819506]   IA_32E_MODE_GUEST: Can set=Yes, Can clear=Yes
+[ 6094.819506]   ENTRY_TO_SMM: Can set=No, Can clear=Yes
+[ 6094.819507]   DEACTIVATE_DUAL_MONITOR_TREATMENT: Can set=No, Can clear=Yes
+[ 6094.819508]   LOAD_IA32_PERF_GLOBA_L_CTRL: Can set=No, Can clear=Yes
+[ 6094.819508]   LOAD_IA32_PAT: Can set=Yes, Can clear=Yes
+[ 6094.819508]   LOAD_IA32_EFER: Can set=Yes, Can clear=Yes
+[ 6094.819509]   LOAD_IA32_BNDCFGS: Can set=No, Can clear=Yes
+[ 6094.819509]   CONCEAL_VMX_FROM_PT: Can set=No, Can clear=Yes
+[ 6094.819510]   LOAD_IA32_RTIT_CTL: Can set=No, Can clear=Yes
+[ 6094.819510]   LOAD_CET_STATE: Can set=No, Can clear=Yes
+[ 6094.819511]   LOAD_PKRS: Can set=No, Can clear=Yes
