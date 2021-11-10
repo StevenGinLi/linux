@@ -2,7 +2,9 @@ Questions
 1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member 
    implemented / researched. (You may skip this question if you are doing the lab by yourself).
   
+   ```
    Just me, Steven Li.
+   ```
 
 2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone 
    skilled in software development but otherwise unfamiliar with the assignment. Good answers to this 
@@ -10,6 +12,7 @@ Questions
    Note: I may decide to follow these instructions for random assignments, so you should make sure 
    they are accurate.
    
+  ```
   1. Configured Ubuntu VM on VMware Workstation Player
   2. Fork Linux repo on Github
   3. Clone that repo on VM
@@ -26,4 +29,4 @@ Questions
   14. run dmesg
   15. read and save output to something
   16. edit CMPE283-1.c for the other MSR & repeat step 13-14 until done. (Or edit CMPE283-1.c to do all the ctl reads at once, which I did)
-  17. submit output
+  17. submit output```
