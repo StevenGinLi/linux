@@ -29,4 +29,5 @@ Questions
   14. run dmesg
   15. read and save output to something
   16. edit CMPE283-1.c for the other MSR & repeat step 13-14 until done. (Or edit CMPE283-1.c to do all the ctl reads at once, which I did)
-  17. submit output```
+  17. submit output
+```
