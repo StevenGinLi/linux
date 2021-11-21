@@ -1230,16 +1230,42 @@ bool kvm_cpuid(struct kvm_vcpu *vcpu, u32 *eax, u32 *ebx,
 }
 EXPORT_SYMBOL_GPL(kvm_cpuid);
 
+u64 exit_time;
+EXPORT_SYMBOL(exit_time);
+u32 total_exits;
+EXPORT_SYMBOL(total_exits);
+
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
+
+	extern u64 exit_time;
 	u32 eax, ebx, ecx, edx;
+	//extern u32 total_exits;
+	
 
 	if (cpuid_fault_enabled(vcpu) && !kvm_require_cpl(vcpu, 0))
 		return 1;
 
 	eax = kvm_rax_read(vcpu);
 	ecx = kvm_rcx_read(vcpu);
-	kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
+	
+	/* Case 1: Print all types of Exits*/
+	if(eax == 0x4fffffff){
+		eax = total_exits;
+		printk(KERN_INFO "CPUID(0x4FFFFFFF), exits: %u",total_exits);
+	}
+	/* Case 2: Return total time spent processing all exits */
+	else if(eax == 0x4ffffffe){
+		//High
+		ebx = (exit_time >> 32);
+		//Low
+		ecx = (exit_time & 0xffffffff);
+		printk(KERN_INFO "CPUID(0x4FFFFFFE), total time in vmm: %llu cycles",exit_time);
+	}
+	else{
+		kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
+	}
+	
 	kvm_rax_write(vcpu, eax);
 	kvm_rbx_write(vcpu, ebx);
 	kvm_rcx_write(vcpu, ecx);
