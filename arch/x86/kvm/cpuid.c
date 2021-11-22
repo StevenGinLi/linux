@@ -1247,7 +1247,7 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		return 1;
 
 	eax = kvm_rax_read(vcpu);
-	ecx = kvm_rcx_read(vcpu);	
+	ecx = kvm_rcx_read(vcpu);
 	
 	/* Case 1: Print all types of Exits*/
 	if(eax == 0x4fffffff){
