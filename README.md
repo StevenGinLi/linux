@@ -42,7 +42,7 @@ Just me, Steven Li.
 3. Run `make -j <number_of_cores> modules`
 4. Run `sudo make INSTALL_MOD_STRIP=1 modules_install`
 5. Run `sudo make install`
-6. `lsmod | grep kvm` to check if KVM modules are mounted. Skip to step 6 if no output
+6. `lsmod | grep kvm` to check if KVM modules are mounted. Skip to step 9. if no output
 7. `sudo rmmod kvm_intel`
 8. `sudo rmmod kvm`
 9. Reinput the mods `sudo modprobe kvm` and `sudo modprobe kvm_intel`
