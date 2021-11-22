@@ -54,3 +54,4 @@ Just me, Steven Li.
 15. Run CPUID command such `cpuid -l 0x4fffffff` in the nested VM
 16. run `dmesg` on host VM to check outputs 
    
+![image](https://user-images.githubusercontent.com/78942886/142806022-ac4bd3e5-099c-4368-91e8-2562206b28b9.png)
