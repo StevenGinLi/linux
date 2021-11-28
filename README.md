@@ -55,3 +55,49 @@ Just me, Steven Li.
 16. run `dmesg` on host VM to check outputs 
    
 ![image](https://user-images.githubusercontent.com/78942886/142806022-ac4bd3e5-099c-4368-91e8-2562206b28b9.png)
+
+
+# Assignment 3
+
+## Questions
+### 1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member implemented / researched. (You may skip this question if you are doing the lab by yourself).
+
+Just me, Steven Li.
+
+### 2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone skilled in software development but otherwise unfamiliar with the assignment. Good answers to this question will be recipes that someone can follow to reproduce your development steps.Note: I may decide to follow these instructions for random assignments, so you should make sure they are accurate.
+
+1. Continung from assignment 2, already installed Linux and loaded the kernel. Made changes to cpuid.c and vmx.c to have case 1 & 2 of recording number of exits and cycles taken to complete them.
+2. Make changes to cpuid.c and vmx.c to include case 3 & 4, to display # of exits and timings per each exit number #0-69, some numbers are invalid and some are disabled.
+3. Run `make -j <number_of_cores> modules`
+4. Run `sudo make INSTALL_MOD_STRIP=1 modules_install`
+5. Run `sudo make install`
+6. `lsmod | grep kvm` to check if KVM modules are mounted. Skip to step 9. if no output
+7. `sudo rmmod kvm_intel`
+8. `sudo rmmod kvm`
+9. Reinput the mods `sudo modprobe kvm` and `sudo modprobe kvm_intel`
+10. Run the nested VM either through apps or `sudo virt-manager`
+11. Run CPUID command such `cpuid -l 0x4ffffffd -s <exit number>` in the nested VM. I ran exit number from 0-69 to see exit from each exit number.
+12. run `dmesg` on host VM to check outputs 
+
+![image](https://user-images.githubusercontent.com/78942886/143743396-7c9a0dd3-666d-4602-b5f5-d2f1ae237740.png)
+
+
+### 3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail?
+
+The frequency of exit does not increase at a stable rate, each CPUID call results in a different amount of exits. a Full VM boot takes roughly ~1m exits. (Should be lower but I let the VM sit idle for a little bit)
+
+![image](https://user-images.githubusercontent.com/78942886/143753695-3bf14d1d-2c9c-48e1-8ac2-d0109dc9b0c3.png)
+
+
+### 4. Of the exit types defined in the SDM, which are the most frequent? Least?
+
+Most Frequent:
+- 12: HLT
+- 30: I/O instruction
+- 32: WRMSR
+- 48: EPT violation
+
+Least Frequent:
+- 0: Exception or non-maskable interrupt (NMI)
+- 29: MOV DR
+- 31: RDMSR
