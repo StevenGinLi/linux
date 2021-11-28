@@ -1234,12 +1234,19 @@ u64 exit_time;
 EXPORT_SYMBOL(exit_time);
 u32 total_exits;
 EXPORT_SYMBOL(total_exits);
+u32 vm_exits[69];
+EXPORT_SYMBOL(vm_exits);
+u64 vm_times[69];
+EXPORT_SYMBOL(vm_times);
 
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
 
 	extern u64 exit_time;
 	u32 eax, ebx, ecx, edx;
+	
+	//int invalid_ecx[] = {35, 38, 42, 65};
+	//int disabled_ecx[] = {3,4,5,6,11,16,17,33,34,51,63,64,66,67,68,69} Might of missed a few going through all the ones supported in vmx.c and comparing it to the SDM
 	//extern u32 total_exits;
 	
 
@@ -1249,18 +1256,67 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 	eax = kvm_rax_read(vcpu);
 	ecx = kvm_rcx_read(vcpu);
 	
-	/* Case 1: Print all types of Exits*/
+	/* ========== Case 1: Print all types of Exits ==============================*/
 	if(eax == 0x4fffffff){
 		eax = total_exits;
 		printk(KERN_INFO "CPUID(0x4FFFFFFF), exits: %u",total_exits);
 	}
-	/* Case 2: Return total time spent processing all exits */
+	/* ============ Case 2: Return total time spent processing all exits =========================*/
 	else if(eax == 0x4ffffffe){
 		//High
 		ebx = (exit_time >> 32);
 		//Low
 		ecx = (exit_time & 0xffffffff);
 		printk(KERN_INFO "CPUID(0x4FFFFFFE), total time in vmm: %llu cycles",exit_time);
+	}
+	/* =============== Case 3: Return number of exits for ecx value given ===========================*/
+	else if(eax == 0x4ffffffd){
+		// Invalid ecx values
+		if(ecx < 0 || ecx > 69 || ecx == 35 || ecx == 38 || ecx == 42 || ecx == 65){
+		printk(KERN_INFO "CPUID(0x4FFFFFFD), exit number %u is invalid",ecx);
+			eax = 0;
+			ebx = 0;
+			ecx = 0;
+			edx = 0xFFFFFFFF;
+			}
+		// Disabled ecx values
+		else if( ecx == 3 || ecx == 4 || ecx == 5 || ecx == 6 || ecx == 11 || ecx == 16 || ecx == 17 || ecx == 33 || ecx == 34 || ecx == 51 || ecx == 63 || ecx == 64 || ecx == 66 || ecx == 67 || ecx == 68 || ecx == 69){
+		printk(KERN_INFO "CPUID(0x4FFFFFFD), exit number %u is disabled",ecx);
+			eax = 0;
+			ebx = 0;
+			ecx = 0;
+			edx = 0;
+		}
+		// Valid ecx value
+		else{
+			eax = vm_exits[ecx];
+			printk(KERN_INFO "CPUID(0x4FFFFFFD), exit number %u exits=%u",ecx,vm_exits[ecx]);
+		}
+	}
+	/* =============== Case 4: Return time of all exits for ecx value given ===========================*/
+	else if(eax == 0x4ffffffc){
+		// Invalid ecx values
+		if(ecx < 0 || ecx > 69 || ecx == 35 || ecx == 38 || ecx == 42 || ecx == 65){
+		printk(KERN_INFO "CPUID(0x4FFFFFFC), exit number %u is invalid",ecx);
+			eax = 0;
+			ebx = 0;
+			ecx = 0;
+			edx = 0xFFFFFFFF;
+			}
+		// Disabled ecx values
+		else if( ecx == 3 || ecx == 4 || ecx == 5 || ecx == 6 || ecx == 11 || ecx == 16 || ecx == 17 || ecx == 33 || ecx == 34 || ecx == 51 || ecx == 63 || ecx == 64 || ecx == 66 || ecx == 67 || ecx == 68 || ecx == 69){
+		printk(KERN_INFO "CPUID(0x4FFFFFFC), exit number %u is disabled",ecx);
+			eax = 0;
+			ebx = 0;
+			ecx = 0;
+			edx = 0;
+		}
+		// Valid ecx value
+		else{
+			printk(KERN_INFO "CPUID(0x4FFFFFFC), exit number %u cycles=%llu",ecx,vm_times[ecx]);
+			ebx = (vm_times[ecx] >> 32);
+			ecx = (vm_times[ecx] & 0xffffffff);
+		}
 	}
 	else{
 		kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
