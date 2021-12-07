@@ -101,3 +101,31 @@ Least Frequent:
 - 0: Exception or non-maskable interrupt (NMI)
 - 29: MOV DR
 - 31: RDMSR
+
+# Assignment 4
+## Questions
+### 1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member 
+implemented / researched. (You may skip this question if you are doing the lab by yourself).
+Just me.
+### 2. Include a sample of your print of exit count output from dmesg from “with ept” and “without ept”.
+
+with ept:
+
+![image](https://user-images.githubusercontent.com/78942886/144952787-1dd9735d-94d5-4d4c-971a-2498b812d3b9.png)
+![image](https://user-images.githubusercontent.com/78942886/144955205-fec48752-39b7-4033-9798-33a31a273419.png)
+
+
+
+without ept:
+
+![image](https://user-images.githubusercontent.com/78942886/144953740-bd0dac92-2c36-4dd8-80fe-d220d97b1fd9.png)
+
+![image](https://user-images.githubusercontent.com/78942886/144954645-a860695b-cc29-40ec-8f2c-267e69f51d15.png)
+
+
+
+### 3. What did you learn from the count of exits? Was the count what you expected? If not, why not?
+The amount of counts went up without ept as expected because without nested paging there would be more exits even though there is less ept exits. 
+
+### 4. What changed between the two runs (ept vs no-ept)
+The number of exits, there was more total exits in no-ept than ept. I believe the increase comes from the increase need to read and write the cr3 register which triggers additional VM exits. Also there needs to be more table flushes to be done in shadow paging. Essentially more cr3 read and write exits, table flushes and page faults (not from ept) makes up for the difference in amount of VM exits between ept vs. no-ept.
